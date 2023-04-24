@@ -1,28 +1,62 @@
 .attribution {
-    position: fixed;
+    position: absolute;
     font-size: 11px;
     text-align: center;
     bottom: 5px;
     width: 100%;
     height: 30px;
-    
+
 }
 
 .attribution a {
     color: hsl(228, 45%, 44%);
 }
 
-.container{
+.main_container {
+    position: fixed;
     width: 100%;
     height: 100%;
-    background-color: #ffffff;  
+    background-color: #ffffff;
 
 }
 
-.main_header{
+.main_header {
     display: inline;
     position: inherit;
     font-size: 15px;
     font-weight: 700;
 
 }
+.top_container{
+    display: flex;
+    height: 50%;
+    width: 100%;
+}
+
+.left_container{
+    position: inherit;
+    display: inline;
+    width: 50%;
+    height: 100%;
+
+}
+
+.right_container {
+    display: inline-flex;
+    position: inherit ;
+    flex-direction: column;
+    right: 200px;
+    width: 50%;
+    height: 100%;
+}
+
+.bottom_container {
+    position: absolute;
+    display: flex;
+    background-color: #ffffff;
+    bottom: 0 px;
+    width: 100%;
+    height: 50%;
+
+}
+
