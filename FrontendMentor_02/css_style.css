@@ -1,3 +1,7 @@
+body {
+    font-family: 'Inter';
+}
+
 .attribution {
     font-size: 11px;
     text-align: center;
@@ -5,10 +9,6 @@
 
 .attribution a {
     color: hsl(228, 45%, 44%);
-}
-
-body {
-    font-family: 'Inter';
 }
 
 .container {
@@ -39,7 +39,7 @@ body {
 
 }
 
-.img {
+.img_header {
     width: 700px;
     height: 600px;
     object-fit: cover;
