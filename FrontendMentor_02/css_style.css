@@ -1,5 +1,5 @@
 body {
-    font-family: 'Inter';
+    font-family: 'Inter', Arial, Helvetica, sans-serif;
 }
 
 .attribution {
@@ -35,7 +35,7 @@ body {
     width: 700px;
     height: 600px;
     right: 0px;
-    background-color: rgb(52, 0, 85);
+    background-color: rgba(52, 0, 85);
 
 }
 
@@ -50,17 +50,22 @@ body {
     position: inherit;
     font-weight: 700;
     font-size: 52px;
-    color: rgba(255, 255, 255, 1.000);
+    color: white;
     top: 50px;
     margin-left: 100px;
     margin-right: 850px;
+}
+
+span {
+    color: rgba(170, 92, 219, 1.000);
+
 }
 
 .main_paragraph {
     position: inherit;
     font-size: 23px;
     font-weight: 400;
-    color: hsla(0, 0%, 100%, 0.75);
+    color: hsl(0, 0%, 100%, 0.75);
     top: 230px;
     margin-left: 100px;
     margin-right: 850px;
