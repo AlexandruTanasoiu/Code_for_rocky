@@ -79,6 +79,19 @@
     height: 50px;
 }
 
+.right_div1{
+    margin-left: 100px;
+
+}
+.right_div2{
+    margin-left:150px;
+
+}
+
+.right_div3{
+    margin-left:200px;
+}
+
 .right_container>div>p {
     position: relative;
     display: inline;
@@ -113,6 +126,14 @@
     height: 300px;
     border-radius: 10px;
     margin-left: 40px;
+}
+
+.bottom_profile2{
+    margin-top:20px;
+}
+
+.bottom_profile3{
+    margin-top:40px;
 }
 
 .bottom_container>div>img {
