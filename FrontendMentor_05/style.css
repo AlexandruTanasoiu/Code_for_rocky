@@ -1,0 +1,8 @@
+.footer_para {
+    font-size: 11px;
+    text-align: center;
+  }
+
+  .footer_para a {
+    color: hsl(228, 45%, 44%);
+  }
