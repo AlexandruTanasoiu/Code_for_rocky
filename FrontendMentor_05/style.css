@@ -23,20 +23,29 @@ section {
   gap: 10px;
 }
 
-section div:first-child, section div:last-child{
+section{
   display: flex;
+  width: 100%;
+  flex-direction: row;  
+}
+
+.left_div, .right_div {
+  background-color: white;
   width: 500px;
   height: 300px;
-  flex-direction: column;
-  background-color: white;
-  justify-content: space-between;
+  box-shadow:5px 6px 30px 3px rgba(0, 0, 0, 0.1),0px 0px 30px 3px rgba(0, 0, 0, 0.1)
 }
 
 .center_div{
 display: flex;
 flex-direction: column;
-justify-content: space-between;
+}
 
+.up_div, .down_div{
+  background-color: white;
+  width: 500px;
+  height: 300px;
+  margin: 20px;
 }
 
 
