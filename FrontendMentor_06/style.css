@@ -35,7 +35,7 @@ main {
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    
+
 }
 
 footer {
@@ -43,8 +43,8 @@ footer {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    background-color:rgba(232, 231, 231,0.5);
-    margin-top:50px;
+    background-color: rgba(232, 231, 231, 0.5);
+    margin-top: 50px;
 }
 
 p {
@@ -66,8 +66,8 @@ h2 {
     text-align: center;
 }
 
-h3{
-    color:var(--dark_graish);
+h3 {
+    color: var(--dark_graish);
     font-size: 1.4rem;
 }
 
@@ -82,7 +82,7 @@ header p {
     width: 65%;
 }
 
-main p:nth-child(2){
+main p:nth-child(2) {
     width: 62%;
     text-align: center;
 }
@@ -103,6 +103,7 @@ main p:nth-child(2){
     font-size: 1.3rem;
     color: white;
     margin: 0px 5px 0px 5px;
+    border: none;
 }
 
 .div_button button:nth-child(1) {
@@ -114,110 +115,121 @@ main p:nth-child(2){
 
 }
 
-.middle_section{
+.middle_section {
     display: flex;
     flex-direction: row;
     width: 60vw;
     height: 60vh;
 }
 
-.middle_left_div{    
+.middle_left_div {
     background-image: url("./images/image-computer.png");
-    flex:55%;
-    background-size: 90% ;
+    flex: 55%;
+    background-size: 90%;
     background-repeat: no-repeat;
 }
 
-.middle_right_div{
-    flex:45%;
-    display: flex;  
+.middle_right_div {
+    flex: 45%;
+    display: flex;
     flex-direction: column;
     padding-left: 20px;
 }
 
-.bottom_img{
+.bottom_img {
     width: 50vw;
     height: 55vh;
     background-image: url("./images/image-devices.png");
-    background-position: center ;
+    background-position: center;
     background-repeat: no-repeat;
-    background-size: 80%;   
+    background-size: 80%;
 
 }
 
-.bottom_div{
+.bottom_div {
     display: flex;
     flex-direction: column;
+    align-items: center;
 }
 
-.bot_sub_div{
-    display: flex;
-    flex-direction: row;
-    justify-content: space-evenly;
+.bottom_div p {
+    width: 60%;
     text-align: center;
 }
 
-.bot_logo_div{
+.bot_sub_div {
     display: flex;
-    flex-direction: row; 
-    justify-content: space-evenly;   
+    flex-direction: row;
+    justify-content: center;
+    margin-bottom: 100px;
+}
+
+.bot_sub_div div {
+    display: flex;
+    flex-direction: column;
     align-items: center;
-    margin-bottom:40px;
+    flex: 33%;
+}
+
+
+.bot_logo_div {
+    display: flex;
+    flex-direction: row;
+    gap: 10rem;
+    margin-bottom: 100px;
 
 }
 
-.bot_logo_div img{
-    width: 8vw;
+.bot_logo_div img {
+    width: 7vw;
     height: 5vh;
 }
 
-.footer_logo{
+.footer_logo {
     width: 10vw;
     height: 10vh;
-    flex:10%;
+    flex: 10%;
     background-image: url("./images/logo.svg");
-    background-size:90%;
+    background-size: contain;
     background-position: center;
     background-repeat: no-repeat;
     margin-left: 50px;
-    
+
 }
 
-.footer_div{
+.footer_div {
     width: 100%;
-    margin: 0 auto;
+    color: var(--graish_blue) ;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
-    margin:50px 100px 0 50px;
+    margin: 50px 100px 0 150px;
 }
 
-.footer_div table{
-    flex:55%;
-    font-size:1.6rem;
-    text-align: center;  
-     
-    
+.footer_div table {
+    flex: 55%;
+    font-size: 1.6rem;
+    text-align: center;
 }
 
-.footer_div td{
-    padding: 0px 80px 20px ;
-    text-align: center; 
+.footer_div td {
+    padding: 0px 80px 20px;
+    text-align: center;
 }
 
-.footer_div div:nth-child(3){
-    position: relative;
-    flex:35%;
+.footer_div div:nth-child(3) {
+    flex: 20%;
     text-align: right;
-    right: 50px;
+    padding: 0 100px;
+
 }
 
 .attribution {
     font-size: 1.2rem;
     text-align: center;
     margin: 50px 0px 5px 0px;
-  }
+}
 
-  .attribution a {
+.attribution a {
     color: hsl(228, 45%, 44%);
-  }
+}
