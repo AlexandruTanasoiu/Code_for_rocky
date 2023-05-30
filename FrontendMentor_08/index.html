@@ -1,26 +1,73 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- displays site properly based on user's device -->
-
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- displays site properly based on user's device -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=League+Spartan:wght@700&display=swap" rel="stylesheet">
   <link rel="icon" type="image/png" sizes="32x32" href="./images/favicon-32x32.png">
-  
-  <title>Frontend Mentor | Calculator app</title>
+  <link rel="stylesheet" href="./style/main_style.css">
+  <title>Project Frontend Mentor | Calculator app</title>
 
-  <!-- Feel free to remove these styles or customise in your own stylesheet 👍 -->
-  <style>
-    .attribution { font-size: 11px; text-align: center; }
-    .attribution a { color: hsl(228, 45%, 44%); }
-  </style>
 </head>
+
 <body>
+  <main class="main_container">
+    <nav>
+      <h1>Calculator</h1>
+      <div>
+        <h2>THEME</h2>
+        <div class="nav_theme_switch">
+          <label for="theme1">1</label>
+          <label for="theme2">2</label>
+          <label for="theme3">3</label>
+          <div class="nav_states">
+            <input class="in_theme1" type="radio" name="switch" id="theme1" checked>
+            <input class="in_theme2" type="radio" name="switch" id="theme2">
+            <input class="in_theme3" type="radio" name="switch" id="theme3">
+            <span class="bullet"></span>
+          </div>
+        </div>
+    </nav>
 
+    <section class="main_calc_container">
+      <section class="main_display">
+        <h1 id="display">0</h1>
+      </section>
+      <section class="main_keyboard">
+        <button class="key_btn " value="7" id="key_7" target="test">7</button>
+        <button class="key_btn " value="8" id="key_8">8</button>
+        <button class="key_btn " value="9" id="key_9">9</button>
+        <button class="key_btn format_btn_del " value="del" id="key_del">DEL</button>
+        <button class="key_btn " value="4" id="key_4">4</button>
+        <button class="key_btn " value="5" id="key_5">5</button>
+        <button class="key_btn " value="6" id="key_6">6</button>
+        <button class="key_btn " value="plus" id="key_plus">+</button>
+        <button class="key_btn " value="1" id="key_1">1</button>
+        <button class="key_btn " value="2" id="key_2">2</button>
+        <button class="key_btn " value="3" id="key_3">3</button>
+        <button class="key_btn " value="minus" id="key_minus">-</button>
+        <button class="key_btn " value="point" id="key_point">.</button>
+        <button class="key_btn " value="0" id="key_0">0</button>
+        <button class="key_btn " value="div" id="key_div">/</button>
+        <button class="key_btn " value="multi" id="key_multi">x</button>
+        <button class="key_btn format_btn_reset" value="reset" id="key_reset">reset</button>
+        <button class="key_btn format_btn_equal" value="equal" id="key_equal">=</button>
+      </section>
+      <div>
+      </div>
 
-  
-  <div class="attribution">
-    Challenge by <a href="https://www.frontendmentor.io?ref=challenge" target="_blank">Frontend Mentor</a>. 
-    Coded by <a href="#">Your Name Here</a>.
-  </div>
+      <footer>
+        <div class="attribution">
+          Challenge by <a href="https://www.frontendmentor.io?ref=challenge" target="_blank">Frontend Mentor</a>.
+          Coded by <a href="#">Alexandru Tanasoiu </a>.
+        </div>
+      </footer>
+  </main>
+  <script src="./main.js" type="module"></script>
 </body>
+
 </html>
