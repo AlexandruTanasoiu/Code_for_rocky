@@ -1,76 +1,75 @@
-var buttons = document.getElementsByTagName("button");
-let num_array = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9"];
-let operator_array = ["plus", "minus", "div", "multi", "equal"];
-let btn_ids = ["key_reset", "key_equal", "key_del"];
-let actual = "";
-let operator = "";
-let variable = [];
-let result = 0;
-let nr = 0;
+let buttons = document.getElementsByTagName("button");
+const num_array = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9"];
+const operator_array = ["plus", "minus", "div", "multi", "equal"];
+let inputVariable = "";
+let calculatorOperator = "";
+let resultVariable = [];
+let intermediarVariable = 0;
+let stepsNumber = 0;
 
 export function calculatorFunction() {
-  for (let i of buttons) {
-    i.addEventListener("click", function () {
+  for (let button of buttons) {
+    button.addEventListener("click", function () {
       // read value from buttons
-      if (num_array.includes(i.value)) {
-        actual = actual + i.value;
-        document.getElementById("display").innerHTML = actual;
+      if (num_array.includes(button.value)) {
+        inputVariable = inputVariable + button.value;
+        document.getElementById("display").innerHTML = inputVariable;
         //delete function
-      } else if (i.value == "del") {
-        actual = actual.substring(0, actual.length - 1);
-        document.getElementById("display").innerHTML = actual;
+      } else if (button.value == "del") {
+        inputVariable = inputVariable.substring(0, inputVariable.length - 1);
+        document.getElementById("display").innerHTML = inputVariable;
         // floating point add
-      } else if (i.value == "point") {
-        actual = actual + ".";
+      } else if (button.value == "point") {
+        inputVariable = inputVariable + ".";
         // reset function
-      } else if (i.value == "reset") {
-        actual = " ";
-        variable = "";
-        nr = 0;
-        result = 0;
-        document.getElementById("display").innerHTML = result;
+      } else if (button.value == "reset") {
+        inputVariable = " ";
+        resultVariable = "";
+        stepsNumber = 0;
+        intermediarVariableVariable = 0;
+        document.getElementById("display").innerHTML = intermediarVariable;
         // operator read
-      } else if (operator_array.includes(i.value)) {
-        operator = i.value;
-        variable = variable + actual + `_${i.value}_`;
-        actual = "";
-        nr++;
+      } else if (operator_array.includes(button.value)) {
+        calculatorOperator = button.value;
+        resultVariable = resultVariable + inputVariable + `_${button.value}_`;
+        inputVariable = "";
+        stepsNumber++;
       }
       // calculator function
-      if (nr == 2) {
-        console.log(`actual: ${actual}`);
-        result = calculator(variable);
-        console.log(`Result ${result}`);
-        nr = 1;
-        variable = result + `_${operator}_`;
-        document.getElementById("display").innerHTML = result;
+      if (stepsNumber == 2) {
+        // console.log(`actual: ${inputVariable}`);
+        intermediarVariable = calculationResult(resultVariable);
+        // console.log(`Result ${intermediarVariable}`);
+        stepsNumber = 1;
+        resultVariable = intermediarVariable + `_${calculatorOperator}_`;
+        document.getElementById("display").innerHTML = intermediarVariable;
       }
     });
   }
 
-  function calculator(x) {
-    x = x.split("_");
-    let result = [];
-    let first = x[0];
-    let operator = x[1];
-    let second = x[2];
+  function calculationResult(stepsCalculation) {
+    stepsCalculation = stepsCalculation.split("_");
+    let intermediarVariable = [];
+    let first = stepsCalculation[0];
+    let calculatorOperator = stepsCalculation[1];
+    let second = stepsCalculation[2];
 
     // for debug
-    // console.log(`operator in function: ${x[1]}`);
+    // console.log(`operator in function: ${stepsCalculation[1]}`);
     // console.log(`first: ${first}`);
     // console.log(`second:${second}`);
 
-    if (operator == "plus") {
-      result = Number(first) + Number(second);
-    } else if (operator == "minus") {
-      result = Number(first) - Number(second);
-    } else if (operator == "div") {
-      result = Number(first) / Number(second);
-    } else if (operator == "multi") {
-      result = Number(first) * Number(second);
-    } else if (operator == "equal") {
-      result = first;
+    if (calculatorOperator == "plus") {
+      intermediarVariable = Number(first) + Number(second);
+    } else if (calculatorOperator == "minus") {
+      intermediarVariable = Number(first) - Number(second);
+    } else if (calculatorOperator == "div") {
+      intermediarVariable = Number(first) / Number(second);
+    } else if (calculatorOperator == "multi") {
+      intermediarVariable = Number(first) * Number(second);
+    } else if (calculatorOperator == "equal") {
+      intermediarVariable = first;
     }
-    return result;
+    return intermediarVariable;
   }
 }
