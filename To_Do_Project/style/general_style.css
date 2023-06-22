@@ -27,42 +27,54 @@ body {
   background-repeat: no-repeat;
   box-shadow: -10px -10px 20px #ffc565, 10px 15px 20px #3f166d;
   border-radius: 40px;
-  gap: 50px;
 }
 .main__section-menu {
   display: flex;
   align-items: center;
   margin: 80px 0 0 160px;
-  width: 60%;
-  height: 8ch;
+  width: 100%;
+  height: 120px;
+}
+.main__section-title {
+  font-size: 45px;
+  font-weight: 700;
+  margin: 0 0 0 180px;
 }
 .main__section-form {
-  margin: 0 0 0 80px;
-  background-image: linear-gradient(to right, rgba(255, 197, 101, 0.7), rgba(63, 22, 109, 0.7));
   display: grid;
+  margin: 0 0 0 120px;
+  background-image: linear-gradient(to right, rgba(255, 197, 101, 0.7), rgba(63, 22, 109, 0.7));
   grid-template-columns: 0.5fr 1fr;
   grid-template-rows: 0.5fr 0.5fr 0.5fr 2fr 1fr;
-  width: 50%;
+  width: 40%;
   height: 450px;
   padding: 20px;
   align-items: center;
   gap: 8px;
   text-align: right;
   border-radius: 15px;
+  display: none;
 }
 .main__section-actions {
   display: flex;
   flex-direction: column;
-  width: 60%;
-  height: 300px;
-  border: solid 2px green;
+  align-items: center;
+  width: 55%;
+  height: 600px;
+  margin: 0 0 0 120px;
+  background-image: linear-gradient(to right, rgba(255, 197, 101, 0.7), rgba(63, 22, 109, 0.7));
+  border-radius: 15px;
 }
 .main__section label {
   font-size: 20px;
-  font-weight: 900;
+  font-weight: 700;
 }
 .main__section input {
+  padding-left: 5px;
   height: 30px;
+  border: none;
+  border-radius: 5px;
+  font-family: "Play", sans-serif;
 }
 
 .menu__links {
@@ -73,8 +85,6 @@ body {
   align-items: center;
 }
 .menu__links-action {
-  color: white;
-  cursor: pointer;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -84,9 +94,16 @@ body {
   border-radius: 30px;
   gap: 5px;
   box-shadow: 2px 2px 10px #3f166d;
+  color: white;
+  cursor: pointer;
+  font-size: 18px;
+  font-weight: 700;
 }
 .menu__links-action:hover {
   background-color: #592297;
+}
+.menu__links-action:active {
+  transform: scaleX(0.95);
 }
 .menu__links-icon {
   width: 35px;
@@ -94,6 +111,9 @@ body {
 }
 
 .form__container-btn {
+  font-family: "Play", sans-serif;
+  font-size: 18px;
+  font-weight: 700;
   grid-column: -2;
   width: 250px;
   height: 50px;
@@ -101,4 +121,98 @@ body {
   background-color: #3f166d;
   border-radius: 10px;
   border: none;
+  box-shadow: 2px 2px 10px #3f166d;
+}
+.form__container-btn:active {
+  transform: scaleX(0.8);
+  transition: transform 0.2s;
+}
+.form__container-descript {
+  border-radius: 5px;
+  font-family: "Play", sans-serif;
+  padding: 10px;
+}
+
+.actions__container-buttons {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 15%;
+}
+.actions__container-buttons select {
+  background-color: #3f166d;
+  border: none;
+  width: 150px;
+  height: 35px;
+  color: white;
+  font-size: 16px;
+  font-family: "Play", sans-serif;
+  border-radius: 5px;
+  box-shadow: 2px 2px 10px #3f166d;
+}
+.actions__container-item {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: solid 3px rgba(63, 22, 109, 0.7);
+  width: 95%;
+  height: 100px;
+  gap: 10px;
+  padding: 10px;
+  font-size: 22px;
+  font-weight: 400;
+}
+
+.container__item-title {
+  font-size: 22px;
+}
+.container__item-fname {
+  font-size: 18px;
+}
+.container__item-lname {
+  font-size: 18px;
+}
+.container__item-descript {
+  font-size: 18px;
+  font-weight: 700;
+  width: 35%;
+}
+.container__item-update {
+  font-family: "Play", sans-serif;
+  font-size: 16px;
+  font-weight: 700;
+  width: 80px;
+  height: 35px;
+  color: white;
+  background-color: #3f166d;
+  border-radius: 10px;
+  border: none;
+  box-shadow: 2px 2px 10px #3f166d;
+}
+.container__item-update:active {
+  transform: scaleX(0.95);
+  transition: transform 0.2s;
+}
+.container__item-update:hover {
+  background-color: #592297;
+}
+.container__item-delete {
+  font-family: "Play", sans-serif;
+  font-size: 16px;
+  font-weight: 700;
+  width: 80px;
+  height: 35px;
+  color: white;
+  background-color: #3f166d;
+  border-radius: 10px;
+  border: none;
+  box-shadow: 2px 2px 10px #3f166d;
+}
+.container__item-delete:active {
+  transform: scaleX(0.95);
+  transition: transform 0.2s;
+}
+.container__item-delete:hover {
+  background-color: #592297;
 }/*# sourceMappingURL=general_style.css.map */
