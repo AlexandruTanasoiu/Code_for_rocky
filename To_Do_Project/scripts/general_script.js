@@ -43,6 +43,8 @@ updateButton.addEventListener("click", function () {
   for (let i = 0; i < localStorage.length; i++) {
     const allTickets = JSON.parse(localStorage.getItem(localStorage.key(i)));
     console.log(allTickets);
+    createListItems();
+    // document.location.reload;
     // const itemContainer = document.createElement("div");
     // const titleItem = document.createElement("h2");
     // titleItem.appendChild(document.createTextNode());
@@ -50,15 +52,44 @@ updateButton.addEventListener("click", function () {
   }
 });
 
-function createListItems(){
-    for(let i = 0; i < localStorage.length; i++){
-    const itemContainer = document.createElement('div')
-    itemContainer.innerHTML='new created';
-    itemContainer.id = '';
-    itemContainer.className = 'actions__container-item';
-    document.getElementById('listContainer').appendChild(itemContainer);
-    }
+function createListItems() {
+  for (let i = 0; i < localStorage.length; i++) {
+    //Create item list container    
+    const itemContainer = document.createElement("div");
+    itemContainer.id = `listItem${i}`;
+    itemContainer.className = "actions__container-item";
+    //Create title
+    const titleItem = document.createElement("h2");
+    titleItem.innerHTML = JSON.parse(
+      localStorage.getItem(localStorage.key(i))
+    ).title;
+    titleItem.className = "container__item-title";
+    //Create first name
+    const fnameItem = document.createElement("h3");
+    fnameItem.innerHTML = JSON.parse(
+      localStorage.getItem(localStorage.key(i))
+    ).fname;
+    fnameItem.className = "container__item-fname";
+    //Create last name
+    const lnameItem = document.createElement("h3");
+    lnameItem.innerHTML = JSON.parse(
+      localStorage.getItem(localStorage.key(i))
+    ).lname;
+    lnameItem.className = "container__item-lname";
+    // Create description
+    const descriptItem = document.createElement("p");
+    descriptItem.innerHTML = JSON.parse(
+      localStorage.getItem(localStorage.key(i))
+    ).descript;
+    descriptItem.className = "container__item-descript";
+    // Combine items container with data
+    itemContainer.appendChild(titleItem);
+    itemContainer.appendChild(fnameItem);
+    itemContainer.appendChild(lnameItem);
+    itemContainer.appendChild(descriptItem);
+    document.getElementById("listContainer").appendChild(itemContainer);
+  }
 }
-createListItems();
 
+createListItems();
 
