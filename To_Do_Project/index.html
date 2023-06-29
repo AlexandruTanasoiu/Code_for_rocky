@@ -12,24 +12,24 @@
     <section class="main__section">
         <nav class="main__section-menu">
             <ul class="menu__links">
-                <li class="menu__links-action"><img class="menu__links-icon" src="./assets/add_icon1.png" alt="">Add tickets</li>
-                <li class="menu__links-action"><img class="menu__links-icon" src="./assets/list_2.png" alt="">List tickets</li>
+                <li class="menu__links-action" id="formButton"><img class="menu__links-icon" src="./assets/add_icon1.png" alt="">Add tickets</li>
+                <li class="menu__links-action" id="listButton"><img class="menu__links-icon" src="./assets/list_2.png" alt="">List tickets</li>
             </ul>
             <h1 class="main__section-title">Tickets CRUD Project</h1>
         </nav>
 
-        <section class="main__section-form">
+        <section class="main__section-form" id="formContainer">
             <label for="title">Ticket title:</label>
-            <input class="form__container-title" type="text" name="title" id="title">
+            <input class="form__container-title" type="text" name="title" id="titleTicket">
             <label for="fname">First Name:</label>
-            <input class="form__container-fname" type="text" name="fname" id="fname">
+            <input class="form__container-fname" type="text" name="fname" id="fnameTicket">
             <label for="lname">Last Name:</label>
-            <input class="form__container-lname" type="text" name="lname" id="lname">
+            <input class="form__container-lname" type="text" name="lname" id="lnameTicket">
             <label for="descript">Responsability description</label>
-            <textarea class="form__container-descript" name="descript" id="descript" cols="30" rows="10"></textarea>
-            <button class="form__container-btn" type="submit">Submit</button>
+            <textarea class="form__container-descript" name="descript" id="descriptTicket" cols="30" rows="10"></textarea>
+            <button class="form__container-btn" type="submit" id="submitButton">Submit</button>
         </section>
-        <section class="main__section-actions">
+        <section class="main__section-actions" id="listContainer">
             <div class="actions__container-buttons">
                 <select name="sort" id="sort-btn">
                     <option value="alphabet-title">Alphabet by title</option>
