@@ -13,6 +13,7 @@ listButton = document.getElementById("listButton");
 formContainer = document.getElementById("formContainer");
 listContainer = document.getElementById("listContainer");
 submitButton = document.getElementById("submitButton");
+updateButton = document.getElementById("updateButton");
 
 formButton.addEventListener("click", function () {
   formContainer.classList.toggle("active_state");
@@ -37,3 +38,27 @@ submitButton.addEventListener("click", function () {
   localStorage.setItem(`ticket${ticketNumber}`, JSON.stringify(ticketData));
   console.log(document.querySelectorAll("input"));
 });
+
+updateButton.addEventListener("click", function () {
+  for (let i = 0; i < localStorage.length; i++) {
+    const allTickets = JSON.parse(localStorage.getItem(localStorage.key(i)));
+    console.log(allTickets);
+    // const itemContainer = document.createElement("div");
+    // const titleItem = document.createElement("h2");
+    // titleItem.appendChild(document.createTextNode());
+    // itemContainer.appendChild(titleItem);
+  }
+});
+
+function createListItems(){
+    for(let i = 0; i < localStorage.length; i++){
+    const itemContainer = document.createElement('div')
+    itemContainer.innerHTML='new created';
+    itemContainer.id = '';
+    itemContainer.className = 'actions__container-item';
+    document.getElementById('listContainer').appendChild(itemContainer);
+    }
+}
+createListItems();
+
+

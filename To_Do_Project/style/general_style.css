@@ -63,6 +63,7 @@ body {
   margin: 0 0 0 120px;
   background-image: linear-gradient(to right, rgba(255, 197, 101, 0.7), rgba(63, 22, 109, 0.7));
   border-radius: 15px;
+  overflow-y: scroll;
 }
 .main__section label {
   font-size: 20px;
@@ -137,7 +138,7 @@ body {
   justify-content: center;
   align-items: center;
   width: 100%;
-  height: 15%;
+  padding: 10px;
 }
 .actions__container-buttons select {
   background-color: #3f166d;
