@@ -102,4 +102,4 @@ updateButton.addEventListener("click", function () {
   }
 });
 
-// localStorage.clear();
+localStorage.clear();
