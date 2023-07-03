@@ -7,7 +7,7 @@ const ticketData = {
   lname: "",
   descript: "",
 };
-
+{
 formButton = document.getElementById("formButton");
 listButton = document.getElementById("listButton");
 formContainer = document.getElementById("formContainer");
@@ -83,6 +83,13 @@ function addTicket() {
     lnameTicket.value != "" &&
     descriptTicket.value != ""
   ) {
+    const keysStorage = Object.keys(localStorage);
+    // if(keysStorage ==''){
+    //   localStorage.setItem('Item_0', JSON.stringify(ticketData));
+    //   console.log('empty');
+    // } else {
+    //   localStorage.setItem('Item_2', JSON.stringify(ticketData));
+    // }
     ticketID = localStorage.key(0);
     console.log(ticketID);
     ticketNumber = localStorage.length;
@@ -127,8 +134,7 @@ for (let i = 0; i < localStorage.length; i++) {
       console.log(`edit${localStorage.key(i)}`);
     });
 }
-const x = Object.keys(localStorage);
-x.forEach((i) => {
-  console.log(i);
-});
+}
+
+const keysStorage = Object.keys(localStorage);
 // localStorage.clear();
