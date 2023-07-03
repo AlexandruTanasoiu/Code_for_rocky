@@ -94,13 +94,14 @@ function addTicket() {
 }
 
 function updateTicketList() {
-  for (let i = 0; i < localStorage.length; i++) {
-    const checkUniqueTicket = document.getElementById(localStorage.key(i));
+  const keysStorage = Object.keys(localStorage);
+  keysStorage.forEach((key) => {
+    const checkUniqueTicket = document.getElementById(key);
     if (checkUniqueTicket == null) {
-      const ticketData = JSON.parse(localStorage.getItem(localStorage.key(i)));
-      createListItems(ticketData, localStorage.key(i));
+      const ticketData = JSON.parse(localStorage.getItem(key));
+      createListItems(ticketData, key);
     }
-  }
+  });
 }
 
 function resetForm() {
