@@ -21,13 +21,16 @@ formButton.addEventListener("click", function () {
 });
 
 for (let i = 0; i < localStorage.length; i++) {
-  createListItems(JSON.parse(localStorage.getItem(localStorage.key(i))), i);
+  createListItems(
+    JSON.parse(localStorage.getItem(localStorage.key(i))),
+    localStorage.key(i)
+  );
 }
 
-function createListItems(ticketData, idNumber) {
+function createListItems(ticketData, idName) {
   //Create item list container
   const itemContainer = document.createElement("div");
-  itemContainer.id = `listItem${idNumber}`;
+  itemContainer.id = idName;
   itemContainer.className = "actions__container-item";
   //Create title
   const titleItem = document.createElement("h2");
@@ -48,12 +51,12 @@ function createListItems(ticketData, idNumber) {
   // Create delete button
   const deleteButton = document.createElement("button");
   deleteButton.innerHTML = "Delete";
-  deleteButton.id = `deleteButton${idNumber}`;
+  deleteButton.id = `deleteButton${idName}`;
   deleteButton.className = "container__item-delete";
   // Create edit button
   const editButton = document.createElement("button");
   editButton.innerHTML = "Edit";
-  editButton.id = `editButton${idNumber}`;
+  editButton.id = `editButton${idName}`;
   editButton.className = "container__item-edit";
   // Combine items container with data
   itemContainer.appendChild(titleItem);
@@ -64,42 +67,67 @@ function createListItems(ticketData, idNumber) {
   itemContainer.appendChild(editButton);
   document.getElementById("listContainer").appendChild(itemContainer);
 }
-
-submitButton.addEventListener("click", function () {
+function addTicket() {
   const titleTicket = document.getElementById("titleTicket");
   const fnameTicket = document.getElementById("fnameTicket");
   const lnameTicket = document.getElementById("lnameTicket");
   const descriptTicket = document.getElementById("descriptTicket");
   ticketData.title = titleTicket.value;
-  titleTicket.value = "";
   ticketData.fname = fnameTicket.value;
-  fnameTicket.value = " ";
   ticketData.lname = lnameTicket.value;
-  lnameTicket.value = "";
   ticketData.descript = descriptTicket.value;
-  descriptTicket.value = "";
-  const checkTicket = JSON.parse(
-    localStorage.getItem(`listItem${ticketNumber}`)
-  );
-  if (checkTicket != null) {
-    ticketNumber++;    
-  } else localStorage.setItem(`listItem${ticketNumber}`, JSON.stringify(ticketData));
-  localStorage.setItem(`listItem${ticketNumber}`, JSON.stringify(ticketData));
-  // console.log(`Numar ticket${ticketNumber} si date ${ticketData}`);
-});
 
-updateButton.addEventListener("click", function () {
-  console.log(localStorage);
+  if (
+    titleTicket.value != "" &&
+    fnameTicket.value != "" &&
+    lnameTicket.value != "" &&
+    descriptTicket.value != ""
+  ) {
+    ticketID = localStorage.key(0);
+    console.log(ticketID);
+    ticketNumber = localStorage.length;
+    console.log(ticketNumber);
+    localStorage.setItem(`Item_${ticketNumber}`, JSON.stringify(ticketData));
+  } else alert("Fields cannot be empty!");
+  resetForm();
+  // console.log(`Numar ticket${ticketNumber} si date ${ticketData}`);
+}
+
+function updateTicketList() {
   for (let i = 0; i < localStorage.length; i++) {
     const checkUniqueTicket = document.getElementById(localStorage.key(i));
-    console.log(checkUniqueTicket);
     if (checkUniqueTicket == null) {
       const ticketData = JSON.parse(localStorage.getItem(localStorage.key(i)));
-      createListItems(ticketData, i);
-      console.log(localStorage.getItem(localStorage.key(i)));
-      // console.log(ticketData);
+      createListItems(ticketData, localStorage.key(i));
     }
   }
-});
+}
 
-localStorage.clear();
+function resetForm() {
+  titleTicket.value = "";
+  fnameTicket.value = "";
+  lnameTicket.value = "";
+  descriptTicket.value = "";
+}
+
+submitButton.addEventListener("click", addTicket);
+updateButton.addEventListener("click", updateTicketList);
+
+for (let i = 0; i < localStorage.length; i++) {
+  document
+    .getElementById(`deleteButton${localStorage.key(i)}`)
+    .addEventListener("click", function () {
+      console.log(`delete${localStorage.key(i)}`);
+    });
+
+  document
+    .getElementById(`editButton${localStorage.key(i)}`)
+    .addEventListener("click", function () {
+      console.log(`edit${localStorage.key(i)}`);
+    });
+}
+const x = Object.keys(localStorage);
+x.forEach((i) => {
+  console.log(i);
+});
+// localStorage.clear();
