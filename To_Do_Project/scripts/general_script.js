@@ -90,19 +90,11 @@ const ticketData = {
         for (let i = 0; i < keysStorageNumber.length; i++)
           if (keysStorageNumber[i] > maxTicketID)
             maxTicketID = keysStorageNumber[i];
-        console.log(maxTicketID, " ", keysStorage);
+        // console.log(maxTicketID, " ", keysStorage);
         localStorage.setItem(`${maxTicketID + 1}`, JSON.stringify(ticketData));
-
-        // localStorage.setItem("Item_2", JSON.stringify(ticketData));
       }
-      // ticketID = localStorage.key(0);
-      // console.log(ticketID);
-      // ticketNumber = localStorage.length;
-      // console.log(ticketNumber);
-      // localStorage.setItem(`Item_${ticketNumber}`, JSON.stringify(ticketData));
     } else alert("Fields cannot be empty!");
     resetForm();
-    // console.log(`Numar ticket${ticketNumber} si date ${ticketData}`);
   }
 
   function updateTicketList() {
@@ -115,7 +107,7 @@ const ticketData = {
       }
     });
   }
-  let keysStorage = Object.keys(localStorage);
+
   function resetForm() {
     titleTicket.value = "";
     fnameTicket.value = "";
@@ -125,21 +117,28 @@ const ticketData = {
 
   submitButton.addEventListener("click", addTicket);
   updateButton.addEventListener("click", updateTicketList);
+  // modifyTicket;
+  document.getElementById('listContainer').addEventListener("click", modifyTicket);
 
-  for (let i = 0; i < localStorage.length; i++) {
-    document
-      .getElementById(`deleteButton${localStorage.key(i)}`)
-      .addEventListener("click", function () {
-        console.log(`delete${localStorage.key(i)}`);
-      });
+  function modifyTicket() {
+    const keysStorage = Object.keys(localStorage);
+    keysStorage.forEach((key) => {
+      document
+        .getElementById(`deleteButton${key}`)
+        .addEventListener("click", function () {
+          // console.log(`delete${key}`);
+          console.log(key);
+          document.getElementById(key).remove();
+          localStorage.removeItem(key);
+        });
 
-    document
-      .getElementById(`editButton${localStorage.key(i)}`)
-      .addEventListener("click", function () {
-        console.log(`edit${localStorage.key(i)}`);
-      });
+      document
+        .getElementById(`editButton${key}`)
+        .addEventListener("click", function () {
+          console.log(`edit${key}`);
+        });
+    });
   }
 }
 
-// const keysStorage = Object.keys(localStorage);
-localStorage.clear();
+// localStorage.clear();
