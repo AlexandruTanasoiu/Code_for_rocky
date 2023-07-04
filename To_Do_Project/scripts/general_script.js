@@ -118,7 +118,9 @@ const ticketData = {
   submitButton.addEventListener("click", addTicket);
   updateButton.addEventListener("click", updateTicketList);
   // modifyTicket;
-  document.getElementById('listContainer').addEventListener("click", modifyTicket);
+  document
+    .getElementById("listContainer")
+    .addEventListener("click", modifyTicket);
 
   function modifyTicket() {
     const keysStorage = Object.keys(localStorage);
