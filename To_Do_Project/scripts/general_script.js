@@ -18,13 +18,17 @@ formButton.addEventListener("click", function () {
   formContainer.classList.toggle("active_state");
   listContainer.classList.toggle("inactive_state");
 });
-// const allTicketsData = JSON.parse(localStorage.getItem());
 
-for (let i = 0; i < localStorage.length; i++) {
-  createListItems(
-    JSON.parse(localStorage.getItem(localStorage.key(i))),
-    localStorage.key(i)
-  );
+let allTicketsData = [];
+
+function ticketsArray() {
+  let allTicketsData = [];
+  const keysStorage = Object.keys(localStorage);
+  keysStorage.forEach((key) => {
+    allTicketsData.push(JSON.parse(localStorage.getItem(key)));
+    createListItems(JSON.parse(localStorage.getItem(key)), key);
+  });
+  return allTicketsData;
 }
 
 function createListItems(ticketData, idName) {
@@ -67,6 +71,7 @@ function createListItems(ticketData, idName) {
   itemContainer.appendChild(editButton);
   document.getElementById("listContainer").appendChild(itemContainer);
 }
+
 function addTicket() {
   const titleTicket = document.getElementById("titleTicket");
   const fnameTicket = document.getElementById("fnameTicket");
@@ -96,17 +101,30 @@ function addTicket() {
     }
   } else alert("Fields cannot be empty!");
   resetForm();
+  allTicketsData = ticketsArray();
 }
 
+// function updateTicketList() {
+//   const keysStorage = Object.keys(localStorage);
+//   keysStorage.forEach((key) => {
+//     const checkUniqueTicket = document.getElementById(key);
+//     if (checkUniqueTicket == null) {
+//       const ticketData = JSON.parse(localStorage.getItem(key));
+//       createListItems(ticketData, key);
+//     }
+//   });
+// }
+
 function updateTicketList() {
-  const keysStorage = Object.keys(localStorage);
-  keysStorage.forEach((key) => {
-    const checkUniqueTicket = document.getElementById(key);
+  console.log(ticketData);
+  for (let i = 0; i < allTicketsData.length; i++) {
+    const checkUniqueTicket = document.getElementById(i);
+    console.log(checkUniqueTicket);
     if (checkUniqueTicket == null) {
-      const ticketData = JSON.parse(localStorage.getItem(key));
-      createListItems(ticketData, key);
+      const ticketData = allTicketsData[i];
+      createListItems(ticketData, i);
     }
-  });
+  }
 }
 
 function resetForm() {
