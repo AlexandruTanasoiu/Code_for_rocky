@@ -76,13 +76,13 @@ body {
             width: 15px;
         }
 
-        &::-webkit-scrollbar-track {            
+        &::-webkit-scrollbar-track {
             box-shadow: inset 2px 2px 5px v.$bg_color_right1;
             border-radius: 5px;
-            background-color: v.$bg_color_left0;            
+            background-color: v.$bg_color_left0;
         }
 
-        &::-webkit-scrollbar-thumb {            
+        &::-webkit-scrollbar-thumb {
             background: v.$bg_color_right1;
             border-radius: 5px;
             border: solid 1px v.$bg_color_left0;
@@ -92,7 +92,6 @@ body {
             background: v.$bg_color_right0;
         }
     }
-
 
     label {
         font-size: 20px;
@@ -246,10 +245,42 @@ body {
     }
 }
 
-.active_state {
+.modal__section {    
+    display: none;
+    // display: flex;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    top: 250px;
+    gap: 15px;
+    width: 75%;
+    height: 220px;
+    padding: 10px;
+    border-radius: 15px;
+    background-image: linear-gradient(to right, v.$bg_color_right_tr, v.$bg_color_left_tr);
+
+    label {
+        font-size: 20px;
+        font-weight: 700;
+        width: 150px;
+    }
+
+    input {
+        padding-left: 5px;
+        height: 30px;
+        border: none;
+        border-radius: 5px;
+        font-family: v.$general_font;
+    }
+}
+
+.grid_state {
     display: grid;
 }
 
+.flex_state {
+    display: flex;
+}
 .inactive_state {
     display: none;
 }

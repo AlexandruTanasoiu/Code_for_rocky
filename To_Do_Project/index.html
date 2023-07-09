@@ -12,7 +12,8 @@
     <section class="main__section">
         <nav class="main__section-menu">
             <ul class="menu__links">
-                <li class="menu__links-action" id="formButton"><img class="menu__links-icon" src="./assets/add_icon1.png" alt="">Add tickets</li>
+                <li class="menu__links-action" id="formButton"><img class="menu__links-icon"
+                        src="./assets/add_icon1.png" alt="">Add tickets</li>
                 <!-- <li class="menu__links-action" id="listButton"><img class="menu__links-icon" src="./assets/list_2.png" alt="">List tickets</li> -->
             </ul>
             <h1 class="main__section-title">Tickets CRUD Project</h1>
@@ -26,7 +27,8 @@
             <label for="lname">Last Name:</label>
             <input class="form__container-lname" type="text" name="lname" id="lnameTicket">
             <label for="descript">Responsability description</label>
-            <textarea class="form__container-descript" name="descript" id="descriptTicket" cols="30" rows="10"></textarea>
+            <textarea class="form__container-descript" name="descript" id="descriptTicket" cols="30"
+                rows="10"></textarea>
             <button class="form__container-btn" type="submit" id="submitButton">Submit</button>
         </section>
         <section class="main__section-actions" id="listContainer">
@@ -35,19 +37,23 @@
                     <option value="alphabet-title">Alphabet by title</option>
                     <option value="alphabet-fname">Alphabet by first name</option>
                     <option value="alphabet-lname">Alphabet by last name</option>
-                </select>   
-                <button class="actions__container-update" id="updateButton">Update</button>             
+                </select>
+                <button class="actions__container-update" id="clearButton">Clear Local DB</button>
             </div>
-            <!-- <div class="actions__container-item">
-                <h2 class="container__item-title" id="titleList">Title</h1>
-                <h3 class="container__item-fname" id="fnameList">First Name</h2>
-                <h3 class="container__item-lname" id="lnameList">Last Name</h2>
-                <p class="container__item-descript" id="item-descript">Responsability description</p>
-                
-                <button class="container__item-delete" id="deleteButton">Delete</button>
-            </div>                 -->
-        </section>
+        </section>       
     </section>
+    <div class="modal__section" id="modalForm">
+        <label for="title">Ticket title:</label>
+        <input class="form__container-title" type="text" name="title" id="modalTitle">
+        <label for="fname">First Name:</label>
+        <input class="form__container-fname" type="text" name="fname" id="modalFname">
+        <label for="lname">Last Name:</label>
+        <input class="form__container-lname" type="text" name="lname" id="modalLname">
+        <label for="descript">Responsability description</label>
+        <textarea class="form__container-descript" name="descript" id="modalDescript" cols="30"
+            rows="10"></textarea>
+        <button class="form__container-btn" type="submit" id="saveButton">Save</button>
+    </div>
     <script src="./scripts/general_script.js"></script>
 </body>
 

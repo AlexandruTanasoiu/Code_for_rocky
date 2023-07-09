@@ -258,8 +258,38 @@ body {
   background-color: #592297;
 }
 
-.active_state {
+.modal__section {
+  display: none;
+  justify-content: center;
+  align-items: center;
+  position: fixed;
+  top: 250px;
+  gap: 15px;
+  width: 75%;
+  height: 220px;
+  padding: 10px;
+  border-radius: 15px;
+  background-image: linear-gradient(to right, rgba(255, 197, 101, 0.7), rgba(63, 22, 109, 0.7));
+}
+.modal__section label {
+  font-size: 20px;
+  font-weight: 700;
+  width: 150px;
+}
+.modal__section input {
+  padding-left: 5px;
+  height: 30px;
+  border: none;
+  border-radius: 5px;
+  font-family: "Play", sans-serif;
+}
+
+.grid_state {
   display: grid;
+}
+
+.flex_state {
+  display: flex;
 }
 
 .inactive_state {
