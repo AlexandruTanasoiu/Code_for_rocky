@@ -31,18 +31,17 @@ formButton.addEventListener("click", function () {
 
 // function for get data from local
 function storeTicketsArray() {
-  console.log(localStorage);
   keysStorage.sort((x, y) => x - y);
   keysStorage.forEach((key) => {
-    console.log(key);
-    if (allTicketsData[key] == null) {
-      // console.log(JSON.parse(localStorage.getItem(key)));
+    if (
+      allTicketsData.find((ticketId) => ticketId.id === parseInt(key)) == null
+    ) {
       allTicketsData.push(JSON.parse(localStorage.getItem(key)));
     } else {
-      const ticketIndex = allTicketsData.findIndex(
+      const idPosition = allTicketsData.findIndex(
         (ticketId) => ticketId.id === parseInt(key)
       );
-      allTicketsData[ticketIndex] = JSON.parse(localStorage.getItem(key));
+      allTicketsData[idPosition] = JSON.parse(localStorage.getItem(key));
     }
   });
   return allTicketsData;
@@ -141,9 +140,12 @@ function modifyTicket() {
       .getElementById(`deleteButton${key}`)
       .addEventListener("click", function () {
         // console.log(`delete${key}`);
-        console.log(key);
         document.getElementById(key).remove();
         localStorage.removeItem(key);
+        const idPosition = allTicketsData.findIndex(
+          (ticketId) => ticketId.id === parseInt(key)
+        );
+        allTicketsData.splice(idPosition, 1);
       });
 
     document
@@ -155,7 +157,7 @@ function modifyTicket() {
         const ticketFound = allTicketsData.find(
           (ticket) => ticket.id === parseInt(key)
         );
-        // console.log(allTicketsData, key, ticketFound);
+        console.log(ticketFound);
         document.getElementById("modalTitle").value = ticketFound.title;
         document.getElementById("modalFname").value = ticketFound.fname;
         document.getElementById("modalLname").value = ticketFound.lname;
@@ -164,13 +166,18 @@ function modifyTicket() {
         saveButton.addEventListener("click", function () {
           listContainer.classList.remove("inactive_state");
           modalForm.classList.remove("flex_state");
+          console.log("key" + key);
           editTicket(parseInt(key));
+          allTicketsData = storeTicketsArray();
+          postTicketsList();
+          modifyTicket();
         });
       });
   });
 }
 
 function editTicket(ticketId) {
+  console.log("editFunction" + ticketId);
   ticketData.id = parseInt(ticketId);
   ticketData.title = modalTitle.value;
   ticketData.fname = modalFname.value;
@@ -178,13 +185,9 @@ function editTicket(ticketId) {
   ticketData.descript = modalDescript.value;
   localStorage.setItem(ticketId, JSON.stringify(ticketData));
   document.getElementById(ticketId).remove();
-  allTicketsData = storeTicketsArray();
-  postTicketsList();
-  modifyTicket();
 }
 
 function postTicketsList() {
-  console.log(allTicketsData);
   allTicketsData.forEach((ticketData) => {
     const checkUniqueTicket = document.getElementById(ticketData.id);
     if (checkUniqueTicket === null) createListItems(ticketData, ticketData.id);
@@ -203,10 +206,10 @@ postTicketsList();
 submitButton.addEventListener("click", addTicket);
 modifyTicket();
 
-clearButton.addEventListener("click", function () {
-  console.log("Local database was erased!!!");
-  allTicketsData = [];
-  postTicketsList();
-  localStorage.clear();
-});
+// clearButton.addEventListener("click", function () {
+//   console.log("Local database was erased!!!");
+//   allTicketsData = [];
+//   postTicketsList();
+//   localStorage.clear();
+// });
 // localStorage.clear();
