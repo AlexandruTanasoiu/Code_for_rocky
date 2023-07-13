@@ -88,7 +88,22 @@ function createListElement(ticketData, idName) {
   itemContainer.appendChild(deleteButton);
   itemContainer.appendChild(editButton);
   document.getElementById("listContainer").appendChild(itemContainer);
-  modifyTicket();
+
+  document
+    .getElementById(`deleteButton${idName}`)
+    .addEventListener("click", () => {
+      console.log(`delete${idName}`);
+      handleDeleteElement(idName);
+    });
+
+  document.getElementById(`editButton${idName}`).addEventListener("click", () => {
+    handleEditElement(idName);
+  });
+
+  saveButton.addEventListener("click", () => {
+    handleSaveElement(idName);
+  });
+
 }
 
 // function for add a new ticket
@@ -166,32 +181,9 @@ function handleSaveElement(key) {
   editTicket(parseInt(key));
   allTicketsData = storeTicketsArray();
   postTicketsList();
-  modifyTicket();
 }
 
-function modifyTicket() {
-  keysStorage.forEach((key) => {
-    console.log(key);
-    document
-      .getElementById(`deleteButton${key}`)
-      .addEventListener("click", () => {
-        handleDeleteElement(key);
-      });
-
-    document
-      .getElementById(`editButton${key}`)
-      .addEventListener("click", () => {
-        handleEditElement(key);
-      });
-
-    saveButton.addEventListener("click", () => {
-      handleSaveElement(key);
-    });
-  });
-}
-
-function editTicket(ticketId) {
-  console.log("editFunction" + ticketId);
+function editTicket(ticketId) { 
   ticketData.id = parseInt(ticketId);
   ticketData.title = modalTitle.value;
   ticketData.fname = modalFname.value;
@@ -219,7 +211,6 @@ function resetForm() {
 storeTicketsArray();
 postTicketsList();
 submitButton.addEventListener("click", addTicket);
-modifyTicket();
 
 // clearButton.addEventListener("click", function () {
 //   console.log("Local database was erased!!!");
