@@ -64,10 +64,10 @@ function createListElement(ticketData, idName) {
                                   <p class="container__item-descript">${ticketData.descript}</p>
                                   <button id="deleteButton${idName}" class="container__item-delete">Delete</button>
                                   <button id="editButton${idName}" class="container__item-edit">Edit</button>
-                                </div>`;                                
+                                </div>`;
   listContainer.innerHTML += ticketElementLayout;
 
-// add event listener for all new ticket delete and save
+  // add event listener for all new ticket delete and save
   document
     .getElementById(`deleteButton${idName}`)
     .addEventListener("click", () => {
@@ -80,7 +80,7 @@ function createListElement(ticketData, idName) {
     .addEventListener("click", () => {
       handleEditElement(idName);
     });
-// add event listener for save button from modal editing form
+  // add event listener for save button from modal editing form
   saveButton.addEventListener("click", () => {
     handleSaveElement(idName);
   });
@@ -105,19 +105,17 @@ function addTicket() {
       localStorage.setItem(`${uniqueTicketID}`, JSON.stringify(ticketData));
       createListElement(ticketData, uniqueTicketID);
       keysStorage = Object.keys(localStorage);
-      // console.log("Primul log", ticketData, " ", uniqueTicketID);
     } else {
       // create a unique ID
       const keysStorageNumbers = keysStorage.map(Number);
-      for (let i = 0; i < keysStorageNumbers.length; i++)
-        if (keysStorageNumbers[i] > uniqueTicketID)
-          uniqueTicketID = keysStorageNumbers[i];
+      keysStorageNumbers.sort((prev, curr) => prev - curr);
+      uniqueTicketID = keysStorageNumbers[keysStorageNumbers.length - 1] + 1;
+
       // store local and post it
-      ticketData.id = parseInt(uniqueTicketID + 1);
-      localStorage.setItem(`${uniqueTicketID + 1}`, JSON.stringify(ticketData));
-      createListElement(ticketData, uniqueTicketID + 1);
-      keysStorage = Object.keys(localStorage);
-      // console.log("Al doilea log", ticketData, " ", uniqueTicketID+1);
+      ticketData.id = parseInt(uniqueTicketID);
+      localStorage.setItem(`${uniqueTicketID}`, JSON.stringify(ticketData));
+      createListElement(ticketData, uniqueTicketID);
+      keysStorage = Object.keys(localStorage);      
     }
   } else alert("Fields cannot be empty!");
   // reset form inputs values
@@ -142,7 +140,6 @@ function handleEditElement(key) {
   listContainer.classList.add("inactive_state");
   modalForm.classList.add("flex_state");
   const ticketFound = toDoAppData.find((ticket) => ticket.id === parseInt(key));
-  console.log(ticketFound);
   modalTitle.value = ticketFound.title;
   modalFname.value = ticketFound.fname;
   modalLname.value = ticketFound.lname;
