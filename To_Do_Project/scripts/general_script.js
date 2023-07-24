@@ -57,20 +57,22 @@ function storeTicketsArray() {
 // function for create ticket container
 function createListElement(ticketData, idName) {
   //Create layout for a new ticket
-  const ticketElementLayout = `<div id=${idName} class="actions__container-item">
-                                  <h2 class="container__item-title">${ticketData.title}</h2>
-                                  <h3 class="container__item-fname">${ticketData.fname}</h3>
-                                  <h3 class="container__item-lname">${ticketData.lname}</h3>
-                                  <p class="container__item-descript">${ticketData.descript}</p>
-                                  <button id="deleteButton${idName}" class="container__item-delete">Delete</button>
-                                  <button id="editButton${idName}" class="container__item-edit">Edit</button>
-                                </div>`;
-  listContainer.innerHTML += ticketElementLayout;
+  const container = document.createElement("div");
+  container.className = "actions__container-item";
+  container.id = idName;
+  container.innerHTML = `<h2 class="container__item-title">${ticketData.title}</h2>
+                         <h3 class="container__item-fname">${ticketData.fname}</h3>
+                         <h3 class="container__item-lname">${ticketData.lname}</h3>
+                         <p class="container__item-descript">${ticketData.descript}</p>
+                         <button id="deleteButton${idName}" class="container__item-delete">Delete</button>
+                         <button id="editButton${idName}" class="container__item-edit">Edit</button>
+                              `;
+  listContainer.appendChild(container);
 
   // add event listener for all new ticket delete and save
   document
     .getElementById(`deleteButton${idName}`)
-    .addEventListener("click", () => {
+    .addEventListener("click", function () {
       console.log(`delete${idName}`);
       handleDeleteElement(idName);
     });
@@ -78,7 +80,7 @@ function createListElement(ticketData, idName) {
   document
     .getElementById(`editButton${idName}`)
     .addEventListener("click", () => {
-      handleEditElement(idName);
+      return handleEditElement(idName);
     });
   // add event listener for save button from modal editing form
   saveButton.addEventListener("click", () => {
@@ -115,7 +117,7 @@ function addTicket() {
       ticketData.id = parseInt(uniqueTicketID);
       localStorage.setItem(`${uniqueTicketID}`, JSON.stringify(ticketData));
       createListElement(ticketData, uniqueTicketID);
-      keysStorage = Object.keys(localStorage);      
+      keysStorage = Object.keys(localStorage);
     }
   } else alert("Fields cannot be empty!");
   // reset form inputs values
