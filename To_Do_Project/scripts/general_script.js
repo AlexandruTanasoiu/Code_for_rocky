@@ -197,7 +197,7 @@ clearButton.addEventListener("click", function () {
   localStorage.clear();
 });
 
-function getSortedTickets(ticketsData) {
+function getSortedIds(ticketsData) {
   const sortedIds = [];
   console.log(ticketsData);
   let ticketsValues = [];
