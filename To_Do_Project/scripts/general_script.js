@@ -57,17 +57,15 @@ function storeTicketsArray() {
 // function for create ticket container
 function createListElement(ticketData, idName) {
   //Create layout for a new ticket
-  const container = document.createElement("div");
-  container.className = "actions__container-item";
-  container.id = idName;
-  container.innerHTML = `<h2 class="container__item-title">${ticketData.title}</h2>
+  const containerItem = `<div class=actions__container-item id=${idName}>
+                         <h2 class="container__item-title">${ticketData.title}</h2>
                          <h3 class="container__item-fname">${ticketData.fname}</h3>
                          <h3 class="container__item-lname">${ticketData.lname}</h3>
                          <p class="container__item-descript">${ticketData.descript}</p>
                          <button id="deleteButton${idName}" class="container__item-delete">Delete</button>
                          <button id="editButton${idName}" class="container__item-edit">Edit</button>
-                              `;
-  listContainer.appendChild(container);
+                         </div>   `;
+  listContainer.insertAdjacentHTML("beforeend", containerItem);
 
   // add event listener for all new ticket delete and save
   document
@@ -80,12 +78,10 @@ function createListElement(ticketData, idName) {
   document
     .getElementById(`editButton${idName}`)
     .addEventListener("click", () => {
-      return handleEditElement(idName);
+      listContainer.classList.add("inactive_state");
+      modalForm.classList.add("flex_state");
+      pushFoundTicket(idName);
     });
-  // add event listener for save button from modal editing form
-  saveButton.addEventListener("click", () => {
-    handleSaveElement(idName);
-  });
 }
 
 // function for add a new ticket
@@ -137,21 +133,26 @@ function handleDeleteElement(key) {
   keysStorage = Object.keys(localStorage);
 }
 
-function handleEditElement(key) {
+function pushFoundTicket(key) {
   console.log(`edit${key}`);
-  listContainer.classList.add("inactive_state");
-  modalForm.classList.add("flex_state");
   const ticketFound = toDoAppData.find((ticket) => ticket.id === parseInt(key));
   modalTitle.value = ticketFound.title;
   modalFname.value = ticketFound.fname;
   modalLname.value = ticketFound.lname;
   modalDescript.value = ticketFound.descript;
+  saveButton.addEventListener(
+    "click",
+    () => {
+      console.log("idName from save", key);
+      handleSaveElement(key);
+    },
+    { once: true }
+  );
 }
 
 function handleSaveElement(key) {
   listContainer.classList.remove("inactive_state");
   modalForm.classList.remove("flex_state");
-  console.log("key" + key);
   editTicket(parseInt(key));
   toDoAppData = storeTicketsArray();
   postTicketsList();
@@ -186,10 +187,26 @@ storeTicketsArray();
 postTicketsList();
 submitButton.addEventListener("click", addTicket);
 
-// clearButton.addEventListener("click", function () {
-//   console.log("Local database was erased!!!");
-//   toDoAppData = [];
-//   postTicketsList();
-//   localStorage.clear();
-// });
-// localStorage.clear();
+clearButton.addEventListener("click", function () {
+  console.log("Local database was erased!!!");
+  toDoAppData = [];
+  const allTicketToDelete = document.getElementsByClassName(
+    "actions__container-item"
+  );
+  while (allTicketToDelete.length) allTicketToDelete[0].remove();
+  localStorage.clear();
+});
+
+function getSortedTickets(ticketsData) {
+  const sortedIds = [];
+  console.log(ticketsData);
+  let ticketsValues = [];
+  ticketData.forEach((ticket) => {
+    console.log(ticket);
+    ticketsValues.push(Object.values(ticket)[2] + Object.values(ticket)[0]);
+  });
+  console.log(ticketsValues);
+  ticketsValues.sort();
+  ticketsValues.forEach((el) => sortedIds.push(parseInt(el[el.length - 1])));
+  return sortedIds;
+}
