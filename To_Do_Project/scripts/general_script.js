@@ -2,7 +2,7 @@
 let uniqueTicketID = 0;
 let toDoAppData = [];
 let keysStorage = Object.keys(localStorage);
-
+let sortedIds = [];
 const ticketData = {
   id: "",
   title: "",
@@ -20,6 +20,7 @@ const fnameTicket = document.getElementById("fnameTicket"); // input add element
 const lnameTicket = document.getElementById("lnameTicket"); // input add element for lastname of new ticket
 const descriptTicket = document.getElementById("descriptTicket"); // textarea element for description of new ticket
 const submitButton = document.getElementById("submitButton"); // submit data for a new ticket
+const sortButton = document.getElementById("sort-btn");
 
 // list window with all saved tickets
 const listContainer = document.getElementById("listContainer"); // window with all registred tickets
@@ -57,6 +58,7 @@ function storeTicketsArray() {
 // function for create ticket container
 function createListElement(ticketData, idName) {
   //Create layout for a new ticket
+  console.log(idName);
   const containerItem = `<div class=actions__container-item id=${idName}>
                          <h2 class="container__item-title">${ticketData.title}</h2>
                          <h3 class="container__item-fname">${ticketData.fname}</h3>
@@ -190,23 +192,53 @@ submitButton.addEventListener("click", addTicket);
 clearButton.addEventListener("click", function () {
   console.log("Local database was erased!!!");
   toDoAppData = [];
+  deleteAllItems();
+});
+
+function getSortedIds(ticketsData, sortedBy) {
+  const sortedIds = [];
+  // console.log(ticketsData);
+  let ticketsValues = [];
+  ticketsData.forEach((ticket) => {
+    // console.log(ticket);
+    ticketsValues.push(
+      Object.values(ticket)[sortedBy] + Object.values(ticket)[0]
+    );
+  });
+  ticketsValues.sort();
+  // console.log(ticketsValues);
+  ticketsValues.forEach((el) => sortedIds.push(parseInt(el[el.length - 1])));
+  return sortedIds;
+}
+
+function deleteAllItems() {
   const allTicketToDelete = document.getElementsByClassName(
     "actions__container-item"
   );
   while (allTicketToDelete.length) allTicketToDelete[0].remove();
-  localStorage.clear();
-});
-
-function getSortedIds(ticketsData) {
-  const sortedIds = [];
-  console.log(ticketsData);
-  let ticketsValues = [];
-  ticketData.forEach((ticket) => {
-    console.log(ticket);
-    ticketsValues.push(Object.values(ticket)[2] + Object.values(ticket)[0]);
-  });
-  console.log(ticketsValues);
-  ticketsValues.sort();
-  ticketsValues.forEach((el) => sortedIds.push(parseInt(el[el.length - 1])));
-  return sortedIds;
 }
+
+sortButton.addEventListener("click", () => {
+  // console.log("sort pressed", sortButton.value);
+  deleteAllItems();
+  if (sortButton.value === "alphabet-title") {
+    sortedIds = getSortedIds(toDoAppData, 1);
+    sortedIds.forEach((id) => {
+      const getTicket = JSON.parse(localStorage.getItem(id));
+      createListElement(getTicket, id);
+    });
+  } else if (sortButton.value === "alphabet-fname") {
+    sortedIds = getSortedIds(toDoAppData, 2);
+    console.log(sortedIds);
+    sortedIds.forEach((id) => {
+      const getTicket = JSON.parse(localStorage.getItem(id));
+      createListElement(getTicket, id);
+    });
+  } else {
+    sortedIds = getSortedIds(toDoAppData, 3);
+    sortedIds.forEach((id) => {
+      const getTicket = JSON.parse(localStorage.getItem(id));
+      createListElement(getTicket, id);
+    });
+  }
+});
