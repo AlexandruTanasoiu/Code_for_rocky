@@ -1,0 +1,9 @@
+  @mixin flexcoll {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+  }
+
+  $home_bg: url('../Assets/Homepage_background.jpg');
+  $color_bg_card: rgba(122, 216, 244, 0.8);
