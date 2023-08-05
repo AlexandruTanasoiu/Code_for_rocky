@@ -1,9 +1,20 @@
   @mixin flexcoll {
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
   }
 
+
+  @import url('https://fonts.googleapis.com/css2?family=Kanit:ital,wght@0,300;0,500;0,700;1,700&family=Play:wght@400;700&display=swap');
+
+
   $home_bg: url('../Assets/Homepage_background.jpg');
-  $color_bg_card: rgba(122, 216, 244, 0.8);
+  $color_bg_card: rgba(122, 216, 244, 0.85);
+  $color_btn: rgba(102, 61, 198, 0.9);
+  $color_sdw_btn: rgba(31, 63, 110, 1.000);
+  $color_text: rgb(38, 4, 103);
+  $color_title: rgba(122, 216, 244, 1);
+  $color_hover_btn: rgba(91, 47, 195, 0.9);
+  $color_bg_target: rgba(67, 52, 144, 0.75);
+  $color_bg_profile: rgba(67, 52, 144, 1);
