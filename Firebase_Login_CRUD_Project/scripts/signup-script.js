@@ -45,7 +45,7 @@ const languageSelectionElement = document.querySelectorAll(
   ".checkbox__container-input"
 );
 const signUpBtnElement = document.getElementById("signUpBtn");
-const loginBtnElement = document.getElementById("loginBtn");
+
 //class functions
 class User {
   constructor(
@@ -72,11 +72,12 @@ function createNewUser(userEmail, userPass) {
     .then((createdUser) => {
       console.log("User created!");
     })
-    .catch((error) =>
+    .catch((error) => {
       console.log(
         `error triggered \n error code: ${error.code} \n error message: ${error.message}`
-      )
-    );
+      );
+      alert(`Error to create your account ${error.code}`);
+    });
 }
 
 function pushUserData(
@@ -96,15 +97,22 @@ function pushUserData(
 
 function getDataForm() {
   const firstName = firstNameElement.value;
+  firstNameElement.value = "";
   const lastName = lastNameElement.value;
+  lastNameElement.value = "";
   const emailUser = emailUserElement.value;
+  emailUserElement.value = "";
   const userName = userNameElement.value;
+  userNameElement.value = "";
   const passUser = passUserElement.value;
+  passUserElement.value = "";
   const confirmPassUser = confirmPassUserElement.value;
+  confirmPassUserElement.value = "";
   const languageList = [];
-  languageSelectionElement.forEach((input) =>
-    input.checked ? languageList.push(input.value) : ""
-  );
+  languageSelectionElement.forEach((input) => {
+    input.checked ? languageList.push(input.value) : "";
+    input.checked = false;
+  });
 
   if (emailUser && userName && passUser && confirmPassUser) {
     if (passUser === confirmPassUser) {
@@ -135,7 +143,3 @@ signUpBtnElement.addEventListener("click", (event) => {
   event.preventDefault();
   getDataForm();
 });
-
-console.log(
-  new User("ales", "alex", "test", "test", "pass", ["test", "test", 3])
-);

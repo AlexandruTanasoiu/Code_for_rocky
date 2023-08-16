@@ -36,12 +36,50 @@ const dbService = getDatabase(firebaseInit);
 
 //declare html elements
 const logoutBtnElement = document.getElementById("logoutBtn");
+const profileElementsList = document.querySelectorAll(
+  ".user-profile-container h2"
+);
+const meniuBtnElement = document.querySelectorAll(".navbar__container-btn");
+const userProfileContainer = document.querySelector(".user-profile-container");
+const profileNameElement = document.querySelector(".list__container-name");
 
 //helper functions
+function pushProfileData(userData) {
+  let pushDataString = `Firstname: ${userData.fname}`;
+  profileElementsList[0].textContent += pushDataString;
+  pushDataString = `Lastname: ${userData.lname}`;
+  profileElementsList[1].innerText += pushDataString;
+  pushDataString = `Username: ${userData.username}`;
+  profileElementsList[2].innerText += pushDataString;
+  pushDataString = `Skills: ${userData.skills}`;
+  profileElementsList[3].innerText += pushDataString;
+  pushDataString = `${userData.fname} ${userData.lname}`;
+  profileNameElement.innerText = pushDataString;
+}
 
 function getSignedUserData() {
   onAuthStateChanged(authService, (userSigned) => {
-    console.log(userSigned.uid);
     const userUid = userSigned.uid;
+    console.log(userUid);
+    const pathDb = ref(dbService);
+    get(child(pathDb, `users/${userUid}`))
+      .then((userData) => {
+        console.log(userData.val());
+        pushProfileData(userData.val());
+      })
+      .catch((error) => {
+        console.log("Error code: ", error);
+      });
   });
 }
+
+logoutBtnElement.addEventListener("click", () => {
+  signOut(authService);
+  console.log("Account was signed out!");
+});
+
+meniuBtnElement[1].addEventListener("click", () => {
+  console.log("Profile was pressed");
+  userProfileContainer.classList.toggle("active-grid");
+});
+getSignedUserData();

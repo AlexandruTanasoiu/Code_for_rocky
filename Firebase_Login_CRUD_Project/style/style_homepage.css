@@ -52,7 +52,7 @@ body {
   height: 50px;
   border: none;
   border-radius: 15px;
-  background-color: rgba(102, 61, 198, 0.9);
+  background-color: rgb(102, 61, 198);
   box-shadow: 5px 5px 15px rgb(31, 63, 110);
   font-family: "Kanit";
   font-size: 20px;
@@ -69,7 +69,7 @@ body {
   align-items: center;
   width: 80%;
   height: 50px;
-  background-color: rgba(102, 61, 198, 0.9);
+  background-color: rgb(102, 61, 198);
   text-align: center;
   border-radius: 30px;
   box-shadow: 5px 5px 20px rgb(31, 63, 110);
@@ -129,7 +129,42 @@ body {
   width: 80%;
   height: 80%;
   display: flex;
-  background-color: rgba(67, 52, 144, 0.75);
+  background-color: rgb(67, 52, 144);
   flex-direction: column;
+  justify-content: center;
+  align-items: center;
   border-radius: 25px;
+}
+
+.user-profile-container {
+  width: 80%;
+  height: 95%;
+  background-color: rgba(122, 216, 244, 0.85);
+  display: none;
+  grid-template-columns: 1fr 0.2fr;
+  grid-template-rows: 0.5fr 0.5fr 0.5fr 0.5fr 1fr;
+  align-items: start;
+  justify-items: center;
+  padding: 20px;
+  border-radius: 20px;
+}
+
+.action-icon-edit {
+  width: 20px;
+  height: 20px;
+}
+.action-icon-input {
+  display: none;
+}
+
+.active-block {
+  display: block;
+}
+
+.active-grid {
+  display: grid;
+}
+
+.inactive-status {
+  display: none;
 }/*# sourceMappingURL=style_homepage.css.map */
