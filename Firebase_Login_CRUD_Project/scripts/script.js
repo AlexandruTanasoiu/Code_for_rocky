@@ -64,8 +64,10 @@ function getSignedUserData() {
     const pathDb = ref(dbService);
     get(child(pathDb, `users/${userUid}`))
       .then((userData) => {
-        console.log(userData.val());
-        pushProfileData(userData.val());
+        if (userData.exists()) {
+          console.log(userData.val());
+          pushProfileData(userData.val());
+        } else window.location.href = "./login_page.html";
       })
       .catch((error) => {
         console.log("Error code: ", error);
@@ -82,4 +84,5 @@ meniuBtnElement[1].addEventListener("click", () => {
   console.log("Profile was pressed");
   userProfileContainer.classList.toggle("active-grid");
 });
+
 getSignedUserData();
