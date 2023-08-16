@@ -34,14 +34,31 @@ const firebaseInit = initializeApp(firebaseConfig);
 const authService = getAuth(firebaseInit);
 const dbService = getDatabase(firebaseInit);
 
-//declare html elements
-const logoutBtnElement = document.getElementById("logoutBtn");
+//declare the html elements
 
-//helper functions
+const emailInputElement = document.getElementById("usernameRead");
+const passInputElement = document.getElementById("passwordRead");
+const loginBtnElement = document.getElementById("loginBtn");
+const signUpBtnElement = document.getElementById("signUpBtn");
 
-function getSignedUserData() {
-  onAuthStateChanged(authService, (userSigned) => {
-    console.log(userSigned.uid);
-    const userUid = userSigned.uid;
-  });
-}
+loginBtnElement.addEventListener("click", () => {
+  const emailCredentials = emailInputElement.value;
+  const passCredentials = passInputElement.value;
+  console.log("login button was pressed");
+  console.log(emailInputElement.value, passInputElement.value);
+
+  signInWithEmailAndPassword(authService, emailCredentials, passCredentials)
+    .then((userSigned) => {
+      console.log("Usersigned", userSigned.user);
+      window.location.href = "homepage.html";
+    })
+    .catch((error) => {
+      console.log(`Error code: ${error.code}`);
+      console.log(`Error message: ${error.message}`);
+      alert(`You have an error: ${error.code}`);
+    });
+});
+
+signUpBtnElement.addEventListener("click", () => {
+  window.location.href = "signup_page.html";
+});

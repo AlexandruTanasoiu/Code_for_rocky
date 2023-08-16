@@ -6,8 +6,6 @@
 }
 
 body {
-  width: 100vw;
-  height: 100vh;
   font-family: "Kanit", "sans-serif";
 }
 
@@ -22,20 +20,25 @@ body {
   background-position: center;
   background-size: cover;
   background-repeat: no-repeat;
-  gap: 5px;
+  gap: 30px;
+  padding-top: 30px;
+  padding-bottom: 30px;
 }
 .main__container-signup-title {
-  font-size: 60px;
+  font-size: 40px;
   color: rgb(99, 226, 202);
   text-shadow: 10px 10px 20px rgb(227, 40, 37);
+  background-color: rgba(4, 40, 71, 0.95);
+  padding: 0 10px;
+  border-radius: 10px;
 }
 
 .form__container {
   width: 40%;
-  height: 80%;
+  height: 100%;
   display: grid;
   grid-template-columns: 0.5fr 1fr;
-  grid-template-rows: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+  grid-template-rows: 0.5fr 0.5fr 0.5fr 0.5fr 0.5fr 0.5fr 0.5fr;
   justify-items: center;
   align-items: center;
   -moz-column-gap: 20px;
@@ -46,7 +49,7 @@ body {
   padding: 20px;
   box-shadow: 5px 5px 15px 15px rgb(99, 226, 202);
   border-radius: 20px;
-  row-gap: 20px;
+  row-gap: 15px;
 }
 .form__container-label {
   text-align: end;
@@ -70,6 +73,9 @@ body {
   width: 50%;
   height: 35px;
   border-radius: 5px;
+}
+.form__container-link {
+  width: 50%;
 }
 
 .checkbox__container {

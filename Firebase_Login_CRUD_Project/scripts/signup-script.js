@@ -45,6 +45,25 @@ const languageSelectionElement = document.querySelectorAll(
   ".checkbox__container-input"
 );
 const signUpBtnElement = document.getElementById("signUpBtn");
+const loginBtnElement = document.getElementById("loginBtn");
+//class functions
+class User {
+  constructor(
+    firstName,
+    lastName,
+    emailUser,
+    userName,
+    passUser,
+    languageList
+  ) {
+    this.fname = firstName;
+    this.lname = lastName;
+    this.email = emailUser;
+    this.username = userName;
+    this.pass = passUser;
+    this.skills = languageList;
+  }
+}
 
 //helper functions
 
@@ -69,15 +88,10 @@ function pushUserData(
   passUser,
   languageList
 ) {
-  const userObject = {
-    fname: firstName,
-    lname: lastName,
-    email: emailUser,
-    username: userName,
-    pass: passUser,
-    skills: languageList,
-  };
-  set(ref(dbService, `users/${userId}`), userObject);
+  set(
+    ref(dbService, `users/${userId}`),
+    new User(firstName, lastName, emailUser, userName, passUser, languageList)
+  );
 }
 
 function getDataForm() {
@@ -109,7 +123,7 @@ function getDataForm() {
             passUser,
             languageList
           );
-          console.log("Display name and user data stored!");
+          console.log("User data were stored!");
         } else console.log("User is signed out!");
       });
     } else alert("Password didn't match!");
@@ -121,3 +135,7 @@ signUpBtnElement.addEventListener("click", (event) => {
   event.preventDefault();
   getDataForm();
 });
+
+console.log(
+  new User("ales", "alex", "test", "test", "pass", ["test", "test", 3])
+);

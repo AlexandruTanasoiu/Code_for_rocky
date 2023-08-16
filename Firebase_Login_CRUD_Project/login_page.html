@@ -12,16 +12,17 @@
 <body>
     <section class="main__container-login">
         <div class="login__container">
-            <label class="login__container-label" for="usernameRead">Username:</label>
+            <label class="login__container-label" for="usernameRead">Email:</label>
             <input class="login__container-input" type="text" name="usernameRead" id="usernameRead">
             <label class="login__container-label" for="passwordRead">Password:</label>
-            <input class="login__container-input" type="text" name="passwordRead" id="passwordRead">
+            <input class="login__container-input" type="password" name="passwordRead" id="passwordRead">
             <div class="login__container-actions">
-                <button class="login__container-btn">Login</button>
-                <button class="login__container-btn">Sign Up</button>
+                <button class="login__container-btn" id="loginBtn">Login</button>
+                <button class="login__container-btn" id="signUpBtn">Sign Up</button>
             </div>
         </div>
     </section>
+    <script type="module" src="./scripts/login-script.js"></script>
 </body>
 
 </html>
