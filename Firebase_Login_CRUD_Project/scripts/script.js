@@ -59,19 +59,21 @@ function pushProfileData(userData) {
 
 function getSignedUserData() {
   onAuthStateChanged(authService, (userSigned) => {
-    const userUid = userSigned.uid;
-    console.log(userUid);
-    const pathDb = ref(dbService);
-    get(child(pathDb, `users/${userUid}`))
-      .then((userData) => {
-        if (userData.exists()) {
-          console.log(userData.val());
-          pushProfileData(userData.val());
-        } else window.location.href = "./login_page.html";
-      })
-      .catch((error) => {
-        console.log("Error code: ", error);
-      });
+    if (userSigned) {
+      const userUid = userSigned.uid;
+      console.log(userUid);
+      const pathDb = ref(dbService);
+      get(child(pathDb, `users/${userUid}`))
+        .then((userData) => {
+          if (userData.exists()) {
+            console.log(userData.val());
+            pushProfileData(userData.val());
+          } else console.log("user is signed out");
+        })
+        .catch((error) => {
+          console.log("Error code: ", error);
+        });
+    } else window.location.href = "./login_page.html";
   });
 }
 
