@@ -1,0 +1,215 @@
+// fonts
+$main_font: 'League Spartan', sans-serif;
+$desk-width: 1440px;
+$mobile_width: 375px;
+
+@use 'theme1';
+
+@mixin btn_format($bg, $shadow, $text) {
+    background-color: $bg;
+    box-shadow: 0 3px $shadow;
+    color: $text;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    display: grid;
+    font-family: $main_font;
+    width: $desk-width;
+    margin: 0 auto;
+    background-color: rgba(0, 0, 0, 0.8);
+    box-shadow: 0px -20px 40px theme1.$main_bg_color;
+}
+
+nav {
+    color: theme1.$text_color1;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    margin: 50px 0 30px 0px;
+    width: 30%;
+    height: 60px;
+
+    div {
+        display: flex;
+        flex-direction: row;
+        align-items: end;
+    }
+
+    h1 {
+        margin-bottom: 0;
+    }
+
+    h2 {
+        font-size: 12px;
+        margin: 0 20px;
+    }
+}
+
+footer {
+    margin-top: 20px;
+}
+
+.main_container {
+    height: 100vh;
+    display: flex;
+    background-color: theme1.$main_bg_color;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+}
+
+.nav_theme_switch {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
+    row-gap: 5px;
+    place-items: center;
+}
+
+.nav_states {
+    // width: 80px;
+    padding: 5px 0;
+    position: relative;
+    grid-column: 1/4;
+    display: flex;
+    background-color: theme1.$toogle_bg_color;
+    border-radius: 10px;
+    justify-content: space-between;
+
+    input {
+        margin: 0 5px;
+        opacity: 0;
+        cursor: pointer;
+    }
+}
+
+.bullet {
+    position: absolute;
+    width: 13px;
+    height: 13px;
+    border-radius: 100%;
+    background-color: theme1.$key_bg_color1;
+}
+
+.in_theme1:checked~.bullet {
+    left: 5px;
+    transition: left 0.5s;
+}
+
+.in_theme2:checked~.bullet {
+    position: absolute;
+    left: 50%;
+    display: inline;
+    transform: translateX(-50%);
+    transition: left 0.5s;
+    // transition: right 5s;    
+}
+
+
+
+.in_theme3:checked~.bullet {
+    position: absolute;
+    display: inline;
+    left: 80%;
+    transform: translate(-25%);
+    transition: left 0.5s;
+}
+
+
+
+
+.main_calc_container {
+    display: flex;
+    flex-direction: column;
+    width: 30%;
+    height: 50vh;
+
+
+}
+
+.main_display {
+    display: flex;
+    height: 60px;
+    background-color: theme1.$screen_bg_color;
+    border-radius: 10px;
+    justify-content: right;
+    align-items: center;
+    padding-right: 15px;
+    color: theme1.$text_color1;
+    ;
+
+    h1 {
+
+        font-size: 1.5rem;
+    }
+}
+
+.main_keyboard {
+    display: grid;
+    height: 100%;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr 1fr 1fr 1fr;
+    gap: 18px;
+    border-radius: 10px;
+    background-color: theme1.$toogle_bg_color;
+    padding: 20px;
+    margin-top: 15px;
+}
+
+.key_btn {
+    border: none;
+    @include btn_format($bg: theme1.$key_bg_color2, $shadow: theme1.$key_shadow_color2, $text: none);
+    border-radius: 10px;
+    font-size: 32px;
+    font-weight: 700;
+    font-family: $main_font;
+    text-transform: uppercase;
+
+}
+
+.key_btn:hover {
+    @include btn_format($bg: theme1.$key_toogle_color2, $shadow: none, $text: none);
+}
+
+.format_btn_del {
+    @include btn_format($bg: theme1.$key_bg_color0, $shadow: theme1.$key_shadow_color0 , $text: theme1.$text_color1)
+}
+
+.format_btn_del:hover {
+    @include btn_format($bg: theme1.$key_toogle_color0, $shadow: none, $text: none);
+}
+
+.format_btn_reset {
+    grid-column: 1/3;
+    @include btn_format($bg: theme1.$key_bg_color0, $shadow: theme1.$key_shadow_color0, $text: theme1.$text_color1 );
+}
+
+.format_btn_reset:hover {
+    @include btn_format($bg: theme1.$key_toogle_color2, $shadow: none, $text: none);
+}
+
+.format_btn_equal {
+    grid-column: 3/5;
+    @include btn_format($bg: theme1.$key_bg_color1, $shadow: theme1.$key_shadow_color1, $text: theme1.$text_color1 );
+}
+
+.format_btn_equal:hover {
+    @include btn_format($bg: theme1.$key_toogle_color1, $shadow: none, $text: none);
+}
+
+.attribution {
+    font-size: 11px;
+    text-align: center;
+    color: white;
+
+}
+
+.attribution a {
+    color: rgb(145, 137, 218);
+}
