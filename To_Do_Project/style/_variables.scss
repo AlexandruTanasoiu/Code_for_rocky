@@ -1,0 +1,32 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Play:wght@400;700&display=swap');
+
+$bg_color_left0:#6f2778;
+$bg_color_left1:#3f166d;
+$bg_color_right0:#ffc565;
+$bg_color_right1:#cf8376;
+$bg_hover_links: #592297;
+$bg_color_left_tr:	rgba(63,22,109,0.7);
+$bg_color_right_tr:	rgba(255,197,101,0.7);
+$general_font:'Play', sans-serif;
+
+@mixin button {
+    font-family: $general_font;
+    font-size: 16px;
+    font-weight: 700;
+    width: 80px;
+    height: 35px;
+    color: white;
+    background-color: $bg_color_left1;
+    border-radius: 10px;
+    border: none;
+    box-shadow: 2px 2px 10px $bg_color_left1;
+
+    &:active {
+        transform: scaleX(0.95);
+        transition: transform 0.2s;
+    }
+    &:hover{
+        background-color: $bg_hover_links;
+    }
+}
