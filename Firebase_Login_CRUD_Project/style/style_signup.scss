@@ -8,6 +8,10 @@
 
 body {
   font-family: "Kanit", "sans-serif";
+  background-image: v.$signup_bg_image;
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
 }
 
 .main__container-signup {
@@ -15,12 +19,6 @@ body {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  width: 100%;
-  height: 100%;
-  background-image: v.$signup_bg_image;
-  background-position: center;
-  background-size: cover;
-  background-repeat: no-repeat;
   gap: 30px;
   padding-top: 30px;
   padding-bottom: 30px;
@@ -37,7 +35,6 @@ body {
 
 .form__container {
   width: 40%;
-  height: 100%;
   display: grid;
   grid-template-columns: 0.5fr 1fr;
   grid-template-rows: 0.5fr 0.5fr 0.5fr 0.5fr 0.5fr 0.5fr 0.5fr;
@@ -51,6 +48,7 @@ body {
   box-shadow: 5px 5px 15px 15px v.$color_title_signup;
   border-radius: 20px;
   row-gap: 15px;
+
   &-label {
     text-align: end;
   }

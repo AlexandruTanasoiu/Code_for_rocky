@@ -54,7 +54,8 @@ class User {
     emailUser,
     userName,
     passUser,
-    languageList
+    languageList,
+    descriptionString = ""
   ) {
     this.fname = firstName;
     this.lname = lastName;
@@ -62,6 +63,7 @@ class User {
     this.username = userName;
     this.pass = passUser;
     this.skills = languageList;
+    this.descriptionString = descriptionString;
   }
 }
 

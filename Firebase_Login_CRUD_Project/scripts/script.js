@@ -82,7 +82,7 @@ logoutBtnElement.addEventListener("click", () => {
   console.log("Account was signed out!");
 });
 
-meniuBtnElement[1].addEventListener("click", () => {
+meniuBtnElement[0].addEventListener("click", () => {
   console.log("Profile was pressed");
   userProfileContainer.classList.toggle("active-grid");
 });
